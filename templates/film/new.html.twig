@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer un film{% endblock %}
+
+{% form_theme formulaire 'bootstrap_5_layout.html.twig' %}
+
+{% block body %}
+
+
+    {{ form_start(formulaire) }}
+
+    {{ form_row(formulaire.nom) }}
+    {{ form_row(formulaire.resume) }}
+    {{ form_row(formulaire.realisateur) }}
+    {{ form_row(formulaire.releasedAt) }}
+
+    <button type="submit" class="btn btn-success">Poster</button>
+
+
+    {{ form_end(formulaire) }}
+
+    <a href="{{ path('film') }}" class="btn btn-light">Retour</a>
+{% endblock %}

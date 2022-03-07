@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les films{% endblock %}
+
+{% block body %}
+
+
+
+            <h2> {{ film.nom }} </h2>
+            <h3> réalisé par : {{ film.realisateur }} </h3>
+            <p> {{ film.resume }} </p>
+            <p> <strong> Date de sortie : </strong> {{ film.releasedAt|date('d-m-Y') }} </p>
+
+    <a href="{{ path('change', {id:film.id} ) }}" class="btn btn-warning">Modifier</a>
+
+    <a href="{{ path('film_suppression', {id:film.id} ) }}" class="btn btn-danger">Supprimer</a>
+
+    <a href="{{ path('film') }}" class="btn btn-success">Retour</a>
+
+
+
+
+        <div>
+
+            {% for uncommentaire in film.commentaires %}
+
+                <p><strong> {{ uncommentaire.contenu }} </strong></p>
+                <p> Ecrit le : {{ uncommentaire.createdAt|date('d-m-Y') }} </p>
+
+                <a href="{{ path('changercommentaire', {id:uncommentaire.id}) }}" class="btn btn-success">Modifier</a>
+                <a href="{{ path('suppressioncommentaire', {id:uncommentaire.id}) }}" class="btn btn-danger">Supprimer</a>
+                <hr>
+            {% endfor %}
+
+        </div>
+
+
+
+
+
+
+{% endblock %}

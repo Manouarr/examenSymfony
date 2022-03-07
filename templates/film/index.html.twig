@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les films{% endblock %}
+
+{% block body %}
+
+    {% for film in films %}
+
+            <h2> {{ film.nom }} </h2>
+            <h3> réalisé par : {{ film.realisateur }} </h3>
+            <p> {{ film.resume }} </p>
+            <p> <strong> Date de sortie : </strong> {{ film.releasedAt|date('d-m-Y') }} </p>
+
+        <a href="{{ path('unfilm', {id:film.id}) }}" class="btn btn-success">Voir</a>
+
+        <hr>
+
+    {% endfor %}
+
+
+{% endblock %}
